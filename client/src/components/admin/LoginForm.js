@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form'
 
-import Warning from '../assets/svg/Warning'
-import EyeClose from '../assets/svg/EyeClose'
-import EyeOpen from '../assets/svg/EyeOpen'
+import Warning from '../../assets/svg/Warning'
+import EyeClose from '../../assets/svg/EyeClose'
+import EyeOpen from '../../assets/svg/EyeOpen'
 
 export default function LoginForm(props) {
   const [showPassword, setShowPassword] = useState(false)

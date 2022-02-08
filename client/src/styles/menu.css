@@ -5,6 +5,8 @@
   flex-direction: column;
   justify-content: space-between;
   background: var(--primary-purple);
+  background: var(--light-bg-color);
+  
 }
 .menu .logo {
   display: flex;
@@ -51,7 +53,10 @@
   display: flex;
   align-items: center;
   padding-left: 25px;
+  font-size: 13px;
 }
 .menu .bottom svg {
   margin-right: 5px;
+  width: 20px;
+  height: 20px;
 }
