@@ -111,5 +111,28 @@
 }
 .tab {
   min-height: calc(100% - 36px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
   padding-top: 25px;
+}
+.tab .question-list {
+  width: 100%;
+}
+.tab .question-list .question-card {
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 20px 25px;
+}
+.tab .question-list .question-card:hover {
+  background: rgba(100, 100, 100, .05);
+}
+.tab .question-card .jobs {
+  display: flex;
+  font-size: 14px;
+  opacity: .5;
+  font-weight: 300;
+}
+.tab .question-card .job {
+  margin-right: 7px;
 }

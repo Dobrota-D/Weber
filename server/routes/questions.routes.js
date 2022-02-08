@@ -12,8 +12,13 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   // Create a new question
   const question = new Questions({
-    question: '???',
-    jobs: []
+    /* question: 'Question 04',
+    jobs: [
+      {
+        id: 0,
+        title: 'Métier 0'
+      }
+    ] */
   })
   await question.save()
   
@@ -22,11 +27,11 @@ router.post('/', async (req, res) => {
 })
 router.delete('/:id', (req, res) => {
   // Delete a question
-  const id = req.params.id
+  /* const id = req.params.id
   Questions.findOneAndDelete({ id }, err => {
     if (err) res.status(404).send({ msg: err })
     else res.status(200).send({ msg: `Question ${id} deleted` })
-  })
+  }) */
 })
 
 module.exports = router
