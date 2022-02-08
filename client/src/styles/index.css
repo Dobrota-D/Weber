@@ -1,0 +1,10 @@
+body {
+  background: var(--bg-color);
+}
+.App {
+  display: flex;
+}
+.main-component {
+  width: calc(100% - 250px);
+  padding: 50px;
+}
