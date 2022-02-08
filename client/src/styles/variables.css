@@ -4,7 +4,9 @@
   --light-purple: #484156;
 
   /* --bg-color: #1d1a25; */
-  --bg-color: #1c1b20;
+
+  --bg-color: #17191c;
+  --light-bg-color: #212328;
   
   --success-color: #4BB543;
   --error-color: #E05C74;

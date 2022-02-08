@@ -17,7 +17,6 @@ router.post('/', async (req, res) => {
   })
   await job.save()
   
-  console.log('New job created');
   res.status(200).send({ msg: 'New job created' })
 })
 router.delete('/:id', (req, res) => {

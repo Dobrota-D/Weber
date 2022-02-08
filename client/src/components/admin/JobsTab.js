@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function AdminPanel() {
+export default function JobsTab() {
   return <div>
-    Admin panel
+    Jobs tab
   </div>;
 }
