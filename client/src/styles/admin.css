@@ -1,0 +1,77 @@
+.admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-form {
+  width: 350px;
+  background: var(--primary-purple);
+  padding: 40px;
+  border-radius: 5px;
+}
+.login-form .title {
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+}
+.login-form .input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--primary-purple);
+  margin: 50px 0;
+  border: 2px solid var(--secondary-purple);
+  border-radius: 10px;
+}
+.login-form .input-group label {
+  position: absolute;
+  top: -15px;
+  left: 15px;
+  padding: 0 5px;
+  background: var(--primary-purple);
+}
+.login-form .input-group input {
+  width: calc(100% - 30px);
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: var(--primary-purple);
+  color: white;
+  font-size: 17px;
+}
+.login-form .password-eye {
+  height: 30px;
+  margin-right: 5px;
+  opacity: .5;
+}
+.login-form .password-eye svg {
+  width: 30px;
+  height: 30px;
+}
+.login-form .password-eye svg path {
+}
+.login-form .error-msg {
+  position: absolute;
+  bottom: -30px;
+  display: flex;
+  align-items: center;
+  color: var(--error-color);
+}
+.login-form .error-msg svg {
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
+}
+.login-form .submit {
+  width: 100%;
+  padding: 15px;
+  background: var(--secondary-purple);
+  font-size: 20px;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
