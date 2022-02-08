@@ -13,4 +13,5 @@ a {
 .loading {
   font-size: 14px;
   opacity: .3;
+  text-align: center;
 }

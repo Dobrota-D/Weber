@@ -19,11 +19,21 @@ export default function QuestionsList() {
     })
   }, [URL])
   
+  function deleteQuestion(id) {
+    // Remove a specific question from the 'questions' array
+    const newQuestions = questions.filter(question => question._id !== id)
+    setQuestions(newQuestions)
+  }
+  
   if (isLoading) return (<div className='loading'>Chagement des questions...</div>)
   
   return <div className='question-list'>
-    { questions.map((question, index) => {
-      return ( <QuestionCard data={question} key={index} /> )
-    }) }
+    { questions.length > 0 ?
+       questions.map((question, index) => {
+        return ( <QuestionCard data={question} key={index} deleteThisComponent={() => deleteQuestion(question._id)} /> )
+      })
+      :
+      <div className='loading'>Aucune question trouvée</div>
+    }
   </div>
 }
