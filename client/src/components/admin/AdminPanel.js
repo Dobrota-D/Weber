@@ -30,7 +30,7 @@ export default function AdminPanel() {
       </p>
     </div>
     
-    <div>
+    <div className='tab'>
       {
         activeTab === 'questions' ? <QuestionsTab /> :
         activeTab === 'jobs' ? <JobsTab /> :

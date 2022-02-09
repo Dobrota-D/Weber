@@ -11,7 +11,8 @@ export default function QuestionCard(props) {
   
   const question = props.data.question
   const id = props.data._id
-  const jobs = props.data.jobs
+  const questionJobs = props.data.jobs
+  const allJobs = props.jobs
   
   function deleteQuestion(id) {
     // Delete a question 
@@ -26,43 +27,47 @@ export default function QuestionCard(props) {
   }
   
   return <div className='question-card'>
-    <div>
-      <p className='question'>{ question }</p>
-      
-      <div className='jobs'>
-        { jobs.map((job, index) => {
-          return ( <p className='job' key={index}>{ job.title }{ index < jobs.length - 1 && ', '}</p> )
-        }) }
-      </div>
-
-    </div>
-    <div className='btns'>
-      
-      <button onClick={() => setIsEditMode(true)}>
-        <Pen />
-      </button>
-
-      <button onClick={() => setShowConfirmation(true)}>
-        <Bin />
-      </button>
-      
-      { showConfirmation &&
-        <div className='confirmation-btn'>
-          <p onClick={() => deleteQuestion(id)}>Supprimer</p>
-          <p onClick={() => setShowConfirmation(false)}>Annuler</p>
+    <div className='data'>
+      <div>
+        <p className='question'>{ question }</p>
+        
+        <div className='jobs'>
+          { questionJobs.map((job, index) => {
+            return ( <p className='job' key={index}>{ job.title }{ index < questionJobs.length - 1 && ', '}</p> )
+          }) }
         </div>
-      }
-      
-      
+
+      </div>
+      <div className='btns'>
+        
+        <button onClick={() => setIsEditMode(true)}>
+          <Pen />
+        </button>
+
+        <button onClick={() => setShowConfirmation(true)}>
+          <Bin />
+        </button>
+        
+        { showConfirmation &&
+          <div className='confirmation-btn'>
+            <p onClick={() => deleteQuestion(id)}>Supprimer</p>
+            <p onClick={() => setShowConfirmation(false)}>Annuler</p>
+          </div>
+        }
+        
+        
+      </div>
     </div>
       {
         // Display the 'modify question' over the question card
-        //isEditMode && <ModifyQuestion />
+        isEditMode &&
+        
+        <ModifyQuestion
+          question={props.data}
+          jobs={allJobs}
+          questionId={id}
+          hideModifyForm={() => setIsEditMode(false)}
+        />
       }
   </div>;
-}
-
-function editQuestion(id) {
-  // Edit a question
-  console.log(`Edit question ${id}`);
 }

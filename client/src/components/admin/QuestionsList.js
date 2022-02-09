@@ -7,15 +7,22 @@ export default function QuestionsList() {
   
   const [isLoading, setIsLoading] = useState(true);
   const [questions, setQuestions] = useState();
+  const [jobs, setJobs] = useState();
   
   useEffect(() => {
     // Get all questions at the load of the component
-    
     fetch(`${URL}/questions`)
     .then(res => res.json())
     .then(res => {
       setQuestions(res.questions)
-      setIsLoading(false)
+      
+      // Get all jobs
+      fetch(`${URL}/jobs`)
+      .then(res => res.json())
+      .then(async res => {
+        setJobs(res.jobs)
+        setIsLoading(false)
+      })
     })
   }, [URL])
   
@@ -30,7 +37,7 @@ export default function QuestionsList() {
   return <div className='question-list'>
     { questions.length > 0 ?
        questions.map((question, index) => {
-        return ( <QuestionCard data={question} key={index} deleteThisComponent={() => deleteQuestion(question._id)} /> )
+        return ( <QuestionCard data={question} jobs={jobs} key={index} deleteThisComponent={() => deleteQuestion(question._id)} /> )
       })
       :
       <div className='loading'>Aucune question trouvée</div>

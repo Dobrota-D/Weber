@@ -7,4 +7,5 @@ body {
 .main-component {
   width: calc(100% - 300px);
   padding: 50px;
+  padding-bottom: 0;
 }

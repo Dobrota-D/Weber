@@ -38,9 +38,7 @@
 .login-form .input-group input {
   width: calc(100% - 30px);
   padding: 10px 15px;
-  border: none;
   border-radius: 10px;
-  outline: none;
   background: var(--primary-purple);
   background: var(--light-bg-color);
   
@@ -85,7 +83,7 @@
 /* ADMIN PANEL */
 .admin-panel {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 50px);
 }
 .tabs-nav {
   display: flex;
@@ -110,24 +108,33 @@
   background: var(--secondary-purple);
 }
 .tab {
-  min-height: calc(100% - 36px);
+  height: calc(100% - 75px);
   width: 100%;
   display: flex;
   justify-content: center;
+  overflow: auto;
   padding-top: 25px;
+}
+.tab .wrapper {
+  width: 100%;
 }
 .tab .question-list {
   width: 100%;
 }
 .tab .question-list .question-card {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   position: relative;
   margin: 10px 0;
   background: var(--bg-color);
   border-radius: 10px;
   padding: 20px 25px;
+}
+.tab .question-list .question-card .data {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .tab .question-list .question-card:hover {
   background: rgba(100, 100, 100, .05);
@@ -143,9 +150,6 @@
 }
 .tab .question-card button {
   background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
   padding: 0;
   margin-left: 10px;
 }
@@ -185,10 +189,33 @@
   color: var(--bg-color);
 }
 .question-list .question-card .modify-question-component {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 200%;
-  background: red;
+  padding: 30px 0 10px;
+}
+.question-list .modify-question-component .loading {
+  text-align-last: left;
+}
+.modify-question-component .input-group input {
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 3px;
+}
+.question-list .modify-question-component .jobs-group {
+  margin: 20px 0;
+}
+.modify-question-component .jobs-group input {
+  margin-right: 5px;
+}
+.modify-question-component .submit {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: var(--secondary-purple);
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.modify-question-component .cancel-btn {
+  cursor: pointer;
+  font-size: 14px;
 }
