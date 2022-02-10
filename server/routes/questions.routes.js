@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   // Create a new question
   const question = new Questions({
-    question: 'Question 07',
+    question: 'Question 10',
     jobs: [
       {
         id: 0,
@@ -41,6 +41,16 @@ router.delete('/:id', (req, res) => {
   Questions.findByIdAndDelete(id, err => {
     if (err) res.status(404).send({ error: err })
     else res.status(200).send({ msg: `Question ${id} deleted` })
+  })
+})
+router.patch('/:id', (req, res) => {
+  // Update a specific question
+  const id = req.params.id
+  const data = JSON.parse(req.body)
+  
+  Questions.findByIdAndUpdate(id, data, { new: true }, (err) => {
+    if (err) res.status(400).send({ error: err })
+    else res.status(200).send({ msg: 'Question updated' })
   })
 })
 

@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   // Create a new job
   const job = new Jobs({
-    id: 0,
-    title: "Lead développeur"
+    id: 4,
+    title: "Métier 04"
   })
   await job.save()
   
