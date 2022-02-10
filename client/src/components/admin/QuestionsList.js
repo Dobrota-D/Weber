@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import QuestionCard from './QuestionCard';
 
-export default function QuestionsList() {
+export default function QuestionsList(props) {
   const URL = process.env.REACT_APP_BACKEND_URL
   
   const [isLoading, setIsLoading] = useState(true);
@@ -13,6 +13,10 @@ export default function QuestionsList() {
     // Get all questions at the load of the component
     loadQuestions()
   }, [])
+
+  // Trigger the refresh of the questions list
+  // Triggered by parent, at the creation of a new question
+  props.refreshQuestions.current = () => loadQuestions()
   
   function deleteQuestion(id) {
     // Remove a specific question from the 'questions' array

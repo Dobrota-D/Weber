@@ -3,10 +3,11 @@ import { useForm } from 'react-hook-form'
 
 import Warning from '../../assets/svg/Warning';
 
-export default function CreateQuestion() {
+export default function CreateQuestion(props) {
   const { register, handleSubmit, formState: { errors }, setError, clearErrors } = useForm();
   
   const [jobsCheckedState, setJobsCheckedState] = useState()
+  const [showSuccessCreation, setShowSuccessCreation] = useState(false)
   const [jobs, setJobs] = useState();
   const [showJobsList, setShowJobsList] = useState(false)
   
@@ -40,13 +41,17 @@ export default function CreateQuestion() {
       // Create the new question
       fetch(`${URL}/questions`, { method: 'POST', body: JSON.stringify(data) })
       .then(res => res.json())
-      .then(res => {
-        console.log(res);
+      .then(() => {
+        setShowJobsList(false)
+        setShowSuccessCreation(true)
+        // Refresh the questions list
+        props.refreshQuestions()
+        setTimeout(() => setShowSuccessCreation(false), 2000);
       })
     }
   }
   return <div className='create-question-component'>
-    <p>Ajouter une qestion</p>
+    <p>Ajouter une question</p>
     <form onSubmit={handleSubmit(onSubmit)} className='create-question-form'>
       <div className='input-group'>
         <input {...register(
@@ -96,25 +101,10 @@ export default function CreateQuestion() {
         </div>
       </div>
       
-      <input type='submit' className='submit' value={'Ajouter'} onClick={() => clearErrors('checkbox')} />
-      
+      <div className='btns'>
+        <input type='submit' className='submit' value={'Ajouter'} onClick={() => clearErrors('checkbox')} />
+        { showSuccessCreation && <p className='success-msg'>Nouvelle question ajoutée</p> }
+      </div>
     </form>
   </div>;
-}
-function organizeData(data) {
-  // Orgnaize data to match with DB question's model
-  let jobs = []
-  
-  Object.keys(data).forEach(key => {
-    const value = data[key]
-    const jobId = key.replace('checkbox', '')
-    if (value && key !== 'question') jobs.push({ id: jobId })
-  })
-  
-  const organizedData = {
-    question: data.question,
-    jobs
-  }
-  
-  return organizedData
 }

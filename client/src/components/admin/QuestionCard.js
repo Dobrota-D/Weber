@@ -21,6 +21,7 @@ export default function QuestionCard(props) {
     // remove question from DB
     fetch(`${URL}/questions/${id}`, { method: 'DELETE' })
     .then(() => {
+      setShowConfirmation(false)
       // Call parent function to remove component from the displayed list
       props.deleteThisComponent()
     })
