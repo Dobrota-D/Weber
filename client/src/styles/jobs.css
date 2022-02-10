@@ -36,7 +36,7 @@ hr {
 .jobs-list {
   position: relative;
   margin-top: 65px;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(100vh - 160px);
   width: 100%;
   display: flex;
@@ -53,6 +53,7 @@ hr {
   background-color: var(--primary-purple);
   border-radius: 10px;
   transition: all ease-in-out 1s;
+  overflow: hidden;
 }
 
 .jobs-card button {
@@ -112,7 +113,7 @@ hr {
 }
 .details .jobs-content {
   font-size: 15px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .details .jobs-content p {
   margin-top: 20px;

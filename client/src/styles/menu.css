@@ -6,7 +6,6 @@
   justify-content: space-between;
   background: var(--primary-purple);
   background: var(--light-bg-color);
-  
 }
 .menu .logo {
   display: flex;
@@ -22,7 +21,7 @@
   height: 25px;
   border-radius: 5px;
   background: var(--secondary-purple);
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, .5);
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
 }
 .menu .logo span:last-of-type {
   transform: rotate(20deg) translate(-9px, 3px);
@@ -35,16 +34,16 @@
   display: flex;
   align-items: center;
   padding: 15px 0;
-  padding-left: 25px; 
+  padding-left: 25px;
   font-size: 18px;
 }
 .menu .links svg {
   margin-right: 10px;
 }
 .menu .bottom {
-  opacity: .3;
+  opacity: 0.3;
   margin-bottom: 20px;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
 }
 .menu .bottom:hover {
   opacity: 1;
