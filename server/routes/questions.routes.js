@@ -3,6 +3,7 @@ const router = express.Router()
 
 const db = require('../db/export')
 const Questions = db.models.questions
+const Jobs = db.models.jobs
 
 router.get('/', async (req, res) => {
   // Return all questions
@@ -20,18 +21,17 @@ router.get('/:id', async (req, res) => {
 })
 router.post('/', async (req, res) => {
   // Create a new question
-  const question = new Questions({
-    question: 'Question 10',
-    jobs: [
-      {
-        id: 0,
-        title: 'Métier 0'
-      }
-    ]
-  })
-  await question.save()
+  const data = JSON.parse(req.body)
   
-  console.log('new question created');
+  // Reorganize data to match with the question's model
+  const reorganizedData = await reorganizeData(data)
+  console.log('here', reorganizedData);
+  
+  //const question = new Questions({})
+  
+  
+  //await question.save()
+  
   res.status(200).send({ msg: 'New question created' })
 })
 router.delete('/:id', (req, res) => {
@@ -53,5 +53,36 @@ router.patch('/:id', (req, res) => {
     else res.status(200).send({ msg: 'Question updated' })
   })
 })
+
+
+/* FUNCTION */
+async function reorganizeData(data) {
+  // Reorganize data to match with the question's model
+  let jobs = []
+  
+  const objectLoop = async () => {
+    Object.keys(data).forEach(async key => {
+      const value = data[key]
+      const jobId = key.replace('checkbox', '')
+      if (value && key !== 'question') {
+        // Get job's title by id
+        const jobTitle = await Jobs.findOne({ id: jobId }).then(job => { return job.title })
+        
+        const job = { id: jobId, title: jobTitle }
+        jobs.push(job)
+      }
+    })
+    console.log(jobs);
+  }
+  await objectLoop()
+  
+  const organizedData = {
+    question: data.question,
+    jobs
+  }
+  console.log('ahhhh', organizedData);
+  return organizedData
+}
+
 
 module.exports = router

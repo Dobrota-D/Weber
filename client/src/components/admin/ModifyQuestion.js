@@ -12,12 +12,11 @@ export default function ModifyQuestion(props) {
   const id = props.questionId
 
   // Empty array for all job's checkbox
-  const [jobsCheckedState, setJobCheckedState] = useState(new Array(props.jobs.length).fill(false))
+  const [jobsCheckedState, setJobsCheckedState] = useState(new Array(props.jobs.length).fill(false))
   
   const updateJobState = id => {
     // Update a job's state in the jobsCheckedState array
-    const update = jobsCheckedState.map((state, index) => index === id ? !state : state)
-    setJobCheckedState(update)
+    setJobsCheckedState(jobsCheckedState => jobsCheckedState.map((state, index) => index === id ? !state : state))
   }
   
   const onSubmit = data => {
@@ -29,7 +28,7 @@ export default function ModifyQuestion(props) {
     // Make the question modification
     fetch(`${URL}/questions/${id}`, { method: 'PATCH', body: JSON.stringify(organizedData) })
     .then(res => res.json())
-    .then(res => props.hideModifyForm())
+    .then(res => props.hideModifyForm(true))
   }
   
   return <div className='modify-question-component'>

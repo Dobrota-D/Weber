@@ -11,20 +11,8 @@ export default function QuestionsList() {
   
   useEffect(() => {
     // Get all questions at the load of the component
-    fetch(`${URL}/questions`)
-    .then(res => res.json())
-    .then(res => {
-      setQuestions(res.questions)
-      
-      // Get all jobs
-      fetch(`${URL}/jobs`)
-      .then(res => res.json())
-      .then(async res => {
-        setJobs(res.jobs)
-        setIsLoading(false)
-      })
-    })
-  }, [URL])
+    loadQuestions()
+  }, [])
   
   function deleteQuestion(id) {
     // Remove a specific question from the 'questions' array
@@ -32,12 +20,39 @@ export default function QuestionsList() {
     setQuestions(newQuestions)
   }
   
-  if (isLoading) return (<div className='loading'>Chagement des questions...</div>)
+  const loadQuestions = () => {
+    // Load all questions
+    setIsLoading(true)
+    
+    fetch(`${URL}/questions`)
+    .then(res => res.json())
+    .then(res => {
+      setQuestions(res.questions)
+      
+      // Load all jobs
+      fetch(`${URL}/jobs`)
+      .then(res => res.json())
+      .then(async res => {
+        setJobs(res.jobs)
+        setIsLoading(false)
+      })
+    })
+  }
+  
+  if (isLoading) return (<div className='loading'>Chargement des questions...</div>)
   
   return <div className='question-list'>
     { questions.length > 0 ?
        questions.map((question, index) => {
-        return ( <QuestionCard data={question} jobs={jobs} key={index} deleteThisComponent={() => deleteQuestion(question._id)} /> )
+        return (
+          <QuestionCard
+            data={question}
+            jobs={jobs} 
+            key={index}
+            deleteThisComponent={() => deleteQuestion(question._id)}
+            refreshQuestions={() =>  loadQuestions()}
+          /> 
+        )
       })
       :
       <div className='loading'>Aucune question trouvée</div>
