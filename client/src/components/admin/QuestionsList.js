@@ -12,6 +12,7 @@ export default function QuestionsList(props) {
   useEffect(() => {
     // Get all questions at the load of the component
     loadQuestions()
+    // eslint-disable-next-line
   }, [])
 
   // Trigger the refresh of the questions list

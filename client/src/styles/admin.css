@@ -118,10 +118,10 @@
 .tab .wrapper {
   width: 100%;
 }
-.tab .question-list {
+.tab .question-list, .tab .jobs-list {
   width: 100%;
 }
-.tab .question-list .question-card {
+.tab .question-list .question-card, .tab .jobs-list .job-card {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -130,13 +130,13 @@
   border-radius: 10px;
   padding: 20px 25px;
 }
-.tab .question-list .question-card .data {
+.tab .question-list .question-card .data, .tab .jobs-list .job-card .data {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.tab .question-list .question-card:hover {
+.tab .question-list .question-card:hover, .tab .jobs-list .job-card:hover {
   background: rgba(100, 100, 100, .05);
 }
 .tab .question-card .jobs {
@@ -148,43 +148,43 @@
 .tab .question-card .job {
   margin-right: 7px;
 }
-.tab .question-card button {
+.tab .question-card button, .tab .job-card button {
   background: transparent;
   padding: 0;
   margin-left: 10px;
 }
-.tab .question-card button svg {
+.tab .question-card button svg, .tab .job-card button svg {
   width: 25px;
   height: 25px;
 }
-.tab .question-card button svg path {
+.tab .question-card button svg path, .tab .job-card button svg path {
   stroke: gray;
 }
-.tab .question-card:hover button svg path {
+.tab .question-card:hover button svg path, .tab .job-card:hover button svg path {
   stroke: white
 }
-.tab .question-card .btns {
+.tab .question-card .btns, .tab .job-card .btns {
+  display: flex;
   position: relative;
-  
 }
-.tab .question-card .btns .confirmation-btn {
+.tab .question-card .btns .confirmation-btn, .tab .job-card .btns .confirmation-btn {
   position: absolute;
   top: 0;
   right: 0;
   display: flex;
 }
-.tab .question-card .btns .confirmation-btn p  {
+.tab .question-card .btns .confirmation-btn p, .tab .job-card .btns .confirmation-btn p  {
   border-radius: 5px;
   padding: 3px 7px;
   cursor: pointer;
   font-size: 14px;
   user-select: none;
 }
-.tab .question-card .btns .confirmation-btn p:first-of-type {
+.tab .question-card .btns .confirmation-btn p:first-of-type, .tab .job-card .btns .confirmation-btn p:first-of-type {
   background: var(--error-color);
   margin-right: 10px;
 }
-.tab .question-card .btns .confirmation-btn p:last-of-type {
+.tab .question-card .btns .confirmation-btn p:last-of-type, .tab .job-card .btns .confirmation-btn p:last-of-type {
   background: white;
   color: var(--bg-color);
 }
@@ -302,4 +302,17 @@
 .create-question-form .btns .success-msg {
   font-size: 14px;
   color: var(--success-color);
+}
+.tab .jobs-list .job-card .data .title-and-content {
+  width: calc(100% - 70px);
+}
+.tab .jobs-list .job-card .data .content {
+  display: flex;
+  width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: .3;
+  font-weight: 300;
+  font-size: 14px;
 }
