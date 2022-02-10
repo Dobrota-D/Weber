@@ -55,14 +55,14 @@
   width: 30px;
   height: 30px;
 }
-.login-form .error-msg {
+.error-msg {
   position: absolute;
   bottom: -30px;
   display: flex;
   align-items: center;
   color: var(--error-color);
 }
-.login-form .error-msg svg {
+.error-msg svg {
   width: 17px;
   height: 17px;
   margin-right: 5px;
@@ -194,6 +194,13 @@
 .question-list .modify-question-component .loading {
   text-align-last: left;
 }
+.modify-question-component .input-group {
+  position: relative;
+  font-size: 13px;
+}
+.modify-question-component .error-msg {
+  bottom: -20px;
+}
 .modify-question-component .input-group input {
   padding: 5px;
   font-size: 16px;
@@ -218,4 +225,72 @@
 .modify-question-component .cancel-btn {
   cursor: pointer;
   font-size: 14px;
+}
+.create-question-component {
+  padding: 20px 25px;
+}
+.create-question-component .create-question-form {
+  padding-top: 20px;
+}
+.create-question-component .question-input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 3px;
+}
+.create-question-component .input-group {
+  position: relative;
+}
+.create-question-component .input-group .error-msg {
+  bottom: -25px;
+  font-size: 14px;
+}
+.create-question-form .jobs-list-status {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px;
+  margin: 20px 0;
+  color: rgba(128, 128, 128, .5);
+  user-select: none;
+  cursor: pointer;
+}
+.create-question-form .jobs-list-status::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  margin-right: 7px;
+  border-right: 2px solid rgba(128, 128, 128, .5);
+  border-top: 2px solid rgba(128, 128, 128, .5);
+  transform: rotate(45deg);
+  transition: transform .2s;
+}
+.create-question-form .jobs-list-status.deployed::before {
+  transform: rotate(135deg);
+  margin-bottom: 2px;
+}
+.create-question-form .jobs-list {
+  position: relative;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+.create-question-form .jobs-list input {
+  margin-right: 10px;
+}
+.create-question-form .jobs-list label {
+  user-select: none;
+}
+.create-question-form .jobs-list .error-msg {
+  bottom: -17px;
+  font-size: 14px;
+}
+.create-question-form .submit {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: var(--secondary-purple);
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  margin-right: 10px;
 }

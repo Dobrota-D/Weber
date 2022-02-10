@@ -26,6 +26,14 @@ export default function QuestionCard(props) {
     })
   }
   
+  const handleHideModifyForm = refresh => {
+    // Hide the modify question form
+    setIsEditMode(false)
+    
+    // If refresh variable is declared, refresh the questions list
+    if (refresh) props.refreshQuestions()
+  }
+  
   return <div className='question-card'>
     <div className='data'>
       <div>
@@ -66,7 +74,7 @@ export default function QuestionCard(props) {
           question={props.data}
           jobs={allJobs}
           questionId={id}
-          hideModifyForm={() => setIsEditMode(false)}
+          hideModifyForm={refresh => handleHideModifyForm(refresh)}
         />
       }
   </div>;
