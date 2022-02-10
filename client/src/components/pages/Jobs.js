@@ -6,7 +6,7 @@ import JobsList from "./JobsList";
 export default function Jobs() {
   return (
     <div className="main-component">
-      <div className="title-main-component">
+      <div className="jobs-title-main-component">
         <h1> Fiches Métiers </h1>
         <hr></hr>
       </div>

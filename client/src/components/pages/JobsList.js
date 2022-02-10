@@ -17,7 +17,7 @@ export default function JobsList() {
 
   if (isLoading) return <div className="loading"> Chargement des métiers</div>;
   return (
-    <div className="jobs-list">
+    <div className="jobs-container">
       {jobs.length > 0 ? (
         jobs.map((job, index) => {
           return <JobsCard data={job} key={index} />;
