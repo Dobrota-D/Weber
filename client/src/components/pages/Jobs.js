@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../../styles/jobs.css";
-import JobsList from "./JobsList";
+import JobsList from "../job/JobsList.js";
 
 export default function Jobs() {
   return (
