@@ -6,7 +6,7 @@ import StatsTab from './StatsTab'
 
 
 export default function AdminPanel() {
-  const [activeTab, setActiveTab] = useState('questions');
+  const [activeTab, setActiveTab] = useState('stats');
   
   return <div className='admin-panel'>
     <div className='tabs-nav'>

@@ -341,3 +341,20 @@
   font-weight: 300;
   font-size: 14px;
 }
+.tab .data-container {
+  width: 100%;
+  padding: 20px 25px;
+}
+.tab .data-container .title {
+  font-size: 20px;
+  font-weight: 500;
+}
+.data-container .data-list {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+.data-container .data-list span {
+  font-size: 25px;
+  font-weight: 700;
+  margin-right: 3px;
+}
