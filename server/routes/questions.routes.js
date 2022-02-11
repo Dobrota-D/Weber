@@ -25,14 +25,12 @@ router.post('/', async (req, res) => {
   
   // Reorganize data to match with the question's model
   const reorganizedData = await reorganizeData(data)
-  console.log('here', reorganizedData);
   
-  //const question = new Questions({})
-  
-  
-  //await question.save()
-  
-  res.status(200).send({ msg: 'New question created' })
+  const question = new Questions(reorganizedData)
+  await question.save(err => {
+    if (err) res.status(400).send({ error: err })
+    else res.status(200).send({ msg: 'New question created' })
+  })
 })
 router.delete('/:id', (req, res) => {
   // Delete a question
@@ -55,33 +53,38 @@ router.patch('/:id', (req, res) => {
 })
 
 
-/* FUNCTION */
+
+
+/* FUNCTIONS */
+
 async function reorganizeData(data) {
   // Reorganize data to match with the question's model
-  let jobs = []
-  
-  const objectLoop = async () => {
-    Object.keys(data).forEach(async key => {
-      const value = data[key]
-      const jobId = key.replace('checkbox', '')
-      if (value && key !== 'question') {
-        // Get job's title by id
-        const jobTitle = await Jobs.findOne({ id: jobId }).then(job => { return job.title })
-        
-        const job = { id: jobId, title: jobTitle }
-        jobs.push(job)
-      }
-    })
-    console.log(jobs);
-  }
-  await objectLoop()
+  const jobs = await getJobs(data)
   
   const organizedData = {
     question: data.question,
     jobs
   }
-  console.log('ahhhh', organizedData);
   return organizedData
+}
+async function getJobs(data) {
+  // Organize question's jobs
+  let jobs = []
+  
+  for (const key in data) {
+    const value = data[key]
+    
+    const jobId = key.replace('checkbox', '')
+    
+    if (value && key !== 'question') {
+      // Get job's title by id
+      const jobTitle = await Jobs.findOne({ id: jobId }).then(job => { return job.title })
+      
+      const job = { id: jobId, title: jobTitle }
+      jobs.push(job)
+    }
+  }
+  return jobs
 }
 
 

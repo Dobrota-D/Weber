@@ -4,8 +4,10 @@ import QuestionsList from './QuestionsList';
 import CreateQuestion from './CreateQuestion';
 
 export default function QuestionsTab() {
+  const refreshQuestions = React.useRef(null)
+  
   return <div className='wrapper'>
-    <CreateQuestion />
-    <QuestionsList />
+    <CreateQuestion refreshQuestions={() => refreshQuestions.current()} />
+    <QuestionsList refreshQuestions={refreshQuestions} />
   </div>;
 }

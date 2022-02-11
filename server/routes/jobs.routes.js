@@ -22,8 +22,9 @@ router.post('/', async (req, res) => {
 router.delete('/:id', (req, res) => {
   // Delete a job
   const id = req.params.id
-  Jobs.findOneAndDelete({ id }, err => {
-    if (err) res.status(404).send({ msg: err })
+  
+  Jobs.findByIdAndDelete(id, err => {
+    if (err) res.status(400).send({ error: err })
     else res.status(200).send({ msg: `Job ${id} deleted` })
   })
 })
