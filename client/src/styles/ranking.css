@@ -1,0 +1,114 @@
+.ranking-global-container .ranking-card-global .ranking-circle-progress {
+  width: 60px;
+  height: 60px;
+}
+.ranking-global-container div .ranking-circle-progress {
+  padding-left: calc(100% / 4);
+  margin: 10px 0;
+}
+.ranking-global-container .ranking-card-global-3 .ranking-circle-progress {
+  width: 70px;
+  height: 70px;
+}
+.ranking-global-container .ranking-card-global-2 .ranking-circle-progress {
+  width: 80px;
+  height: 80px;
+}
+.ranking-global-container .ranking-card-global-1 .ranking-circle-progress {
+  width: 90px;
+  height: 90px;
+}
+.ranking-global-container .ranking-card-global {
+  width: 60%;
+  background-color: var(--light-bg-color);
+}
+.ranking-global-container div {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.ranking-global-container div .ranking-name-job {
+  margin: 0 0 0 calc(100% / 10);
+}
+.ranking-global-container .ranking-card-global-1 {
+  width: 95%;
+  background-color: goldenrod;
+  font-size: 25px;
+}
+.ranking-global-container .ranking-card-global-2 {
+  width: 80%;
+  background-color: silver;
+  font-size: 22px;
+}
+.ranking-global-container .ranking-card-global-3 {
+  width: 70%;
+  background-color: chocolate;
+  font-size: 20px;
+}
+.ranking-global-container {
+  position: relative;
+  margin-top: 65px;
+  overflow-y: auto;
+  height: calc(100vh - 120px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ranking-card-global-1
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-path,
+.ranking-card-global-2
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-path,
+.ranking-card-global-3
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-path,
+.ranking-card-global
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-path {
+  stroke: var(--secondary-purple);
+  fill: var(--secondary-purple);
+}
+.ranking-card-global-1
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-text,
+.ranking-card-global-2
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-text,
+.ranking-card-global-3
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-text,
+.ranking-card-global
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-text,
+.ranking-card-global-1
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-trail,
+.ranking-card-global-2
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-trail,
+.ranking-card-global-3
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-trail,
+.ranking-card-global
+  .ranking-circle-progress
+  .CircularProgressbar
+  .CircularProgressbar-trail {
+  fill: #fff;
+  stroke: #fff;
+}
