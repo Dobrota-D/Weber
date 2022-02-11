@@ -60,7 +60,6 @@ export default function RankingList() {
     arr.sort(function (a, b) {
       return a.position - b.position;
     });
-    console.log(arr);
     return arr;
   }
   return (
