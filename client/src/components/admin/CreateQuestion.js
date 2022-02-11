@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import Warning from '../../assets/svg/Warning';
 
 export default function CreateQuestion(props) {
-  const { register, handleSubmit, formState: { errors }, setError, clearErrors } = useForm();
+  const { register, handleSubmit, formState: { errors }, setError, clearErrors, reset } = useForm();
   
   const [jobsCheckedState, setJobsCheckedState] = useState()
   const [showSuccessCreation, setShowSuccessCreation] = useState(false)
@@ -46,6 +46,8 @@ export default function CreateQuestion(props) {
         setShowSuccessCreation(true)
         // Refresh the questions list
         props.refreshQuestions()
+        // Reset input content
+        reset({ question: '' })
         setTimeout(() => setShowSuccessCreation(false), 2000);
       })
     }
@@ -59,7 +61,7 @@ export default function CreateQuestion(props) {
             { required: 'Champ obligatoire' }
           )}
           className='question-input'
-          placeholder='Écrivez votre nouvelle question...'
+          placeholder='Nouvelle question...'
           autoFocus
         />
         { errors.question &&

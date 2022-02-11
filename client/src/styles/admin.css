@@ -194,17 +194,33 @@
 .question-list .modify-question-component .loading {
   text-align-last: left;
 }
-.modify-question-component .input-group {
+.modify-question-component .input-group, .modify-job-component .input-group {
   position: relative;
   font-size: 13px;
+}
+.modify-job-component .job-content-input-group .error-msg {
+  bottom: 5px;
 }
 .modify-question-component .error-msg {
   bottom: -20px;
 }
-.modify-question-component .input-group input {
+.modify-job-component .error-msg {
+  bottom: -1px;
+}
+.modify-question-component .input-group input, .modify-job-component .input-group input, .modify-job-component .input-group textarea {
+  width: 50%;  
   padding: 5px;
-  font-size: 16px;
+  font-size: 15px;
   border-radius: 3px;
+  font-family: 'poppins', sans-serif;
+}
+.modify-job-component .input-group input, .modify-job-component .input-group textarea {
+  margin: 20px 0;
+}
+.modify-job-component .input-group textarea, .create-job-form textarea {
+  width: calc(100% - 10px);
+  height: 7em;
+  font-family: 'poppins', sans-serif;
 }
 .question-list .modify-question-component .jobs-group {
   margin: 20px 0;
@@ -212,7 +228,7 @@
 .modify-question-component .jobs-group input {
   margin-right: 5px;
 }
-.modify-question-component .submit {
+.modify-question-component .submit, .modify-job-component .submit {
   padding: 5px 10px;
   border-radius: 5px;
   background: var(--secondary-purple);
@@ -222,27 +238,36 @@
   cursor: pointer;
   margin-right: 10px;
 }
-.modify-question-component .cancel-btn {
+.modify-question-component .cancel-btn, .modify-job-component .cancel-btn {
   cursor: pointer;
   font-size: 14px;
 }
-.create-question-component {
+.create-question-component, .create-job-component {
   padding: 20px 25px;
 }
-.create-question-component .create-question-form {
+.create-question-component .create-question-form, .create-job-component .create-job-form {
   padding-top: 20px;
 }
-.create-question-component .question-input {
-  width: 80%;
+.create-question-component .question-input, .create-job-component .job-input {
+  width: calc(100% - 20px);
   padding: 10px;
   border-radius: 3px;
+  font-family: 'poppins', sans-serif;
 }
-.create-question-component .input-group {
+.create-question-component .input-group, .create-job-component .input-group {
   position: relative;
 }
-.create-question-component .input-group .error-msg {
+.create-question-component .input-group .error-msg, .create-job-component .input-group .error-msg {
   bottom: -25px;
   font-size: 14px;
+}
+.create-job-component .job-content-input-group .error-msg {
+  bottom: 13px;
+}
+.create-job-form .input-group textarea {
+  margin: 30px 0;
+  border-radius: 3px;
+  padding: 5px;
 }
 .create-question-form .jobs-list-status {
   display: flex;
@@ -285,11 +310,11 @@
   bottom: -17px;
   font-size: 14px;
 }
-.create-question-form .btns {
+.create-question-form .btns, .create-job-form .btns {
   display: flex;
   align-items: center;
 }
-.create-question-form .submit {
+.create-question-form .submit, .create-job-form .submit {
   padding: 7px 15px;
   border-radius: 5px;
   background: var(--secondary-purple);
@@ -299,7 +324,7 @@
   cursor: pointer;
   margin-right: 10px;
 }
-.create-question-form .btns .success-msg {
+.create-question-form .btns .success-msg, .create-job-form .btns .success-msg {
   font-size: 14px;
   color: var(--success-color);
 }

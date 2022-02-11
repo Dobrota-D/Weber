@@ -10,9 +10,10 @@ a {
   text-decoration: none;
   color: white;
 }
-input, button {
+input, button, textarea {
   border: none;
   outline: none;
+  resize: vertical;
 }
 button {
   cursor: pointer;

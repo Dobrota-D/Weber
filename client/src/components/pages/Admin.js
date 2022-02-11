@@ -6,7 +6,7 @@ import LoginForm from '../admin/LoginForm';
 import AdminPanel from '../admin/AdminPanel';
 
 export default function Admin() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
   
   return <div className='main-component admin'>
     { isAuth ? 
@@ -14,5 +14,5 @@ export default function Admin() {
       :
       <LoginForm setAuth={() => setIsAuth(true)} />
     }
-  </div>;
+  </div>
 }
