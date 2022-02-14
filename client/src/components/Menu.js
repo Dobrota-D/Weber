@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Home from "../assets/svg/Home";
 import File from "../assets/svg/File";
 import Help from "../assets/svg/Help";
+import Logout from "../assets/svg/Logout";
 
 import "../styles/menu.css";
 import Podium from "../assets/svg/Podium";
@@ -36,6 +37,10 @@ export default function Menu() {
         <Link to="/about">
           <Help />
           Comment ça marche
+        </Link>
+        <Link to="/login" onClick={() => localStorage.clear()}>
+          <Logout />
+          Déconnexion
         </Link>
       </div>
     </div>

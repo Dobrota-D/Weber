@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { Navigate } from "react-router-dom";
 
 import '../../styles/admin.css'
 
-import LoginForm from '../admin/LoginForm';
 import AdminPanel from '../admin/AdminPanel';
 
-export default function Admin() {
-  const [isAuth, setIsAuth] = useState(false);
+export default function Admin(props) {
   
   return <div className='main-component admin'>
-    { isAuth ? 
-      <AdminPanel />
-      :
-      <LoginForm setAuth={() => setIsAuth(true)} />
-    }
+    { props.isAdmin ? <AdminPanel /> : <Navigate to='/' /> }
   </div>
 }

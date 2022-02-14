@@ -2,7 +2,7 @@ import React from "react";
 import ContainerCard from "../Home/ContainerCard";
 
 
-export default function Home() {
+export default function Home(props) {
   return (
     <div className="main-component">
       la Home

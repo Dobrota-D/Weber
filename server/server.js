@@ -22,5 +22,7 @@ db.connect()
 // Routes init
 const routes = require('./routes/export.routes')
 
+app.use('/auth', routes.auth)
 app.use('/jobs', routes.jobs)
+app.use('/users', routes.users)
 app.use('/questions', routes.questions)

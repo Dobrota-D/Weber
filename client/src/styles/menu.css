@@ -49,18 +49,19 @@
   margin-right: 10px;
 }
 .menu .bottom {
-  opacity: 0.3;
   margin-bottom: 20px;
-  transition: opacity 0.3s;
-}
-.menu .bottom:hover {
-  opacity: 1;
 }
 .menu .bottom a {
   display: flex;
   align-items: center;
   padding-left: 25px;
   font-size: 13px;
+  opacity: .3;
+  margin-top: 5px;
+  transition: opacity 0.3s;
+}
+.menu .bottom a:hover {
+  opacity: 1;
 }
 .menu .bottom svg {
   margin-right: 5px;
