@@ -11,7 +11,7 @@ body {
   padding-bottom: 0;
   height: calc(100vh - 100px);
 }
-.question-card{
+.container-cards .question-card{
   display: flex;
   flex-direction: column;
   width: 90vw;

@@ -1,8 +1,9 @@
-import React from 'react'
+import Reactw from 'react'
 import Cross from "../../assets/svg/Cross";
 import Heart from "../../assets/svg/Heart";
 import Idk from "../../assets/svg/Idk";
 import TinderCard from "react-tinder-card";
+
 
 export default function Swipe() {
   
@@ -16,7 +17,7 @@ export default function Swipe() {
     
     return (
       <div>
-    <TinderCard className='question-card' onSwipe={onSwipe} onCardLeftScreen={() => onCardLeftScreen('fooBar')} preventSwipe={['right', 'left']}>Hello, World!</TinderCard>
+      <TinderCard className='question-card' onSwipe={onSwipe} onCardLeftScreen={() => onCardLeftScreen('fooBar')} preventSwipe={['right', 'left']}>Hello, World!</TinderCard>
       <div className="button-container">
       <div className="dislike-button">
         <Cross/>
