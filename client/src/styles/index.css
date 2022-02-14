@@ -1,5 +1,6 @@
 body {
   background: var(--bg-color);
+  overflow: hidden;
 }
 .App {
   display: flex;

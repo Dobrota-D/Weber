@@ -7,8 +7,13 @@ const Jobs = db.models.jobs
 
 router.get('/', async (req, res) => {
   // Return all questions
+  if (req.query.nb){
+    
+  }
+  console.log(req.query);
   const questions = await Questions.find()
   res.status(200).send({ questions })
+
 })
 router.get('/:id', async (req, res) => {
   // Return a specific question
