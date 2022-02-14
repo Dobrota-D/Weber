@@ -24,7 +24,15 @@
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
 }
 .menu .logo span:last-of-type {
-  transform: rotate(20deg) translate(-9px, 3px);
+  transform: translateX(-19px);
+  animation: slideLogo 0.8s forwards;
+}
+@keyframes slideLogo {
+  0% {
+  }
+  100% {
+    transform: rotate(20deg) translate(-9px, 3px);
+  }
 }
 .menu .links {
   display: flex;
