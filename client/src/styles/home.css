@@ -1,0 +1,117 @@
+.container-cards div div {
+  position: relative;
+  width: 90vw;
+  max-width: 400px;
+  height: 37vh;
+  padding-bottom: 40px;
+}
+.container-cards div div .question-card {
+  position: absolute;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--secondary-purple);
+  border-radius: 8px;
+  overflow: hidden;
+  will-change: transform;
+  transition: all 0.3s ease-in-out;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  animation: apparingCard 1s 3s forwards;
+  bottom: 0;
+  z-index: 3;
+}
+@keyframes apparingCard {
+  0% {
+    transform: scale(0) translateY(-30%);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2) translateY(-30%);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.2) translateY(-15%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.container-cards div div .question-card.third {
+  background-color: #5858b675;
+  animation: apparingCard 1s forwards;
+  transform: scale(0.8) translateY(22%);
+  cursor: default;
+  pointer-events: none;
+  z-index: 1;
+}
+.container-cards div div .question-card.second {
+  background-color: #5858b6;
+  animation: apparingCard 1s 1.5s forwards;
+  transform: scale(0.9) translateY(10%);
+  cursor: default;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.container-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 65%;
+}
+
+.container-cards .button-container {
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  max-width: 400px;
+  margin-top: 15%;
+  height: auto;
+  justify-content: space-between;
+  animation: apparingButtons 2s 2s forwards;
+  opacity: 0;
+}
+@keyframes apparingButtons {
+  0% {
+    opacity: 1;
+    transform: translateX(-15vw);
+  }
+  40% {
+    opacity: 1;
+    transform: rotateZ(10deg) translateX(10vw);
+  }
+  70% {
+    opacity: 1;
+    transform: rotateZ(-5deg) translateX(-3vw);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container-cards .button-container div {
+  height: 0;
+  width: 20%;
+  padding-bottom: 10%;
+  padding-top: 10%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dislike-button {
+  background-color: var(--error-color);
+}
+
+.like-button {
+  background-color: var(--secondary-purple);
+}
+
+.idk-button {
+  background-color: var(--light-purple);
+}

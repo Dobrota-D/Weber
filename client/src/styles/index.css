@@ -1,6 +1,5 @@
 body {
   background: var(--bg-color);
-  
 }
 .App {
   display: flex;
@@ -10,63 +9,4 @@ body {
   padding: 50px;
   padding-bottom: 0;
   height: calc(100vh - 100px);
-}
-.container-cards .question-card{
-  display: flex;
-  flex-direction: column;
-  width: 90vw;
-  max-width: 400px;
-  height: 37vh;
-  background: var(--secondary-purple);
-  padding-bottom: 40px;
-  border-radius: 8px;
-  overflow: hidden;
-  will-change: transform;
-  transition: all 0.3s ease-in-out;
-  cursor: -webkit-grab;
-  cursor: -moz-grab;
-  cursor: grab;
-}
-
-.container-cards{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 65%;
-}
-
-.button-container{
-  display: flex;
-  flex-direction: row;
-  width: 90vw;
-  max-width: 400px;
-  margin-top: 5%;
-  justify-content: space-between;
-  
-}
-
-.button-container div{
-  height: 0;
-  width: 20%;
-  padding-bottom: 10%;
-  padding-top: 10%;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-.dislike-button{
-  background-color: var(--error-color);
-}
-
-.like-button{
-  background-color: var(--secondary-purple);
-}
-
-.idk-button{
-  background-color: var(--light-purple);
 }
