@@ -7,7 +7,7 @@ export default function Login() {
   const [showForm, setShowForm] = useState('login')
   
   return (
-      <div className='main-component fullscreen-component'>
+      <div className='fullscreen-component login-component'>
         { showForm === 'login' ?
           <LoginForm setShowForm={form => setShowForm(form)} /> :
           <RegisterForm setShowForm={form => setShowForm(form)} />

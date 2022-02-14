@@ -36,10 +36,9 @@ function App() {
       navigate('/login')
       setIsLoading(false)
     }
-    
   }, [])
   
-  if (isLoading) return( <div className="loading">Chargement...</div> )
+  if (isLoading) return( <div className="loading fullscreen-component">Chargement...</div> )
   
   return (
     <div className="App">

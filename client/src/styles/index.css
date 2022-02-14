@@ -16,9 +16,12 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--bg-color);
 }
-.question-card{
+/* .question-card{
   display: flex;
   flex-direction: column;
   width: 90vw;
@@ -34,3 +37,4 @@ body {
   cursor: -moz-grab;
   cursor: grab;
 }
+ */
