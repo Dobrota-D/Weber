@@ -18,7 +18,7 @@
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
-  animation: apparingCard 1s 3s forwards;
+  animation: apparingCard 0.8s 2.4s forwards;
   bottom: 0;
   z-index: 3;
 }
@@ -40,7 +40,7 @@
 }
 .container-cards div div .question-card.third {
   background-color: #5858b675;
-  animation: apparingCard 1s forwards;
+  animation: apparingCard 0.8s forwards;
   transform: scale(0.8) translateY(22%);
   cursor: default;
   pointer-events: none;
@@ -48,7 +48,7 @@
 }
 .container-cards div div .question-card.second {
   background-color: #5858b6;
-  animation: apparingCard 1s 1.5s forwards;
+  animation: apparingCard 0.8s 1.2s forwards;
   transform: scale(0.9) translateY(10%);
   cursor: default;
   pointer-events: none;
@@ -72,7 +72,7 @@
   margin-top: 15%;
   height: auto;
   justify-content: space-between;
-  animation: apparingButtons 2s 2s forwards;
+  animation: apparingButtons 1.5s 1.5s forwards;
   opacity: 0;
 }
 @keyframes apparingButtons {
