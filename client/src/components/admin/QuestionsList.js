@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 import QuestionCard from './QuestionCard';
 
 export default function QuestionsList(props) {
   const URL = process.env.REACT_APP_BACKEND_URL
+  const token = localStorage.getItem('token')
+  const navigate = useNavigate()
   
   const [isLoading, setIsLoading] = useState(true);
   const [questions, setQuestions] = useState();
@@ -29,18 +32,20 @@ export default function QuestionsList(props) {
     // Load all questions
     setIsLoading(true)
     
-    fetch(`${URL}/questions`)
+    fetch(`${URL}/questions`, { headers: { 'authorization': `Bearer ${token}` }})
     .then(res => res.json())
     .then(res => {
-      setQuestions(res.questions)
-      
-      // Load all jobs
-      fetch(`${URL}/jobs`)
-      .then(res => res.json())
-      .then(async res => {
-        setJobs(res.jobs)
-        setIsLoading(false)
-      })
+      if (res.status === 200) {
+        setQuestions(res.questions)
+        
+        // Load all jobs
+        fetch(`${URL}/jobs`)
+        .then(res => res.json())
+        .then(async res => {
+          setJobs(res.jobs)
+          setIsLoading(false)
+        })
+      }
     })
   }
   

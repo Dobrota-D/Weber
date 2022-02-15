@@ -11,11 +11,11 @@ const Users = db.models.users
 router.get('/', authenticateToken, async (req, res) => {
   // Return questions
   const user = await Users.findById(req.user._id)
+  const questions = await Questions.find()
   
   if (req.query.hasAnswer === 'false') {
     // Send questions not answered by the user
     const notAnsweredQuestions = user.questions.filter(question => !question.hasAnswer)
-    const questions = await Questions.find()
     let userQuestions = []
     
     await notAnsweredQuestions.forEach(async(question, index) => {
@@ -26,21 +26,17 @@ router.get('/', authenticateToken, async (req, res) => {
       })
     })
     
-    return res.status(200).send({ status: 200, questions: userQuestions })
+    return res.status(200).send({ status: 200, questions })
   }
   
-  const questions = await Questions.find()
-  res.status(200).send({ questions })
-
+  res.status(200).send({ status: 200, questions })
 })
 router.get('/:id', async (req, res) => {
-=======
   // Return all questions
   const questions = await Questions.find();
   res.status(200).send({ questions });
 });
 router.get("/:id", async (req, res) => {
->>>>>>> main
   // Return a specific question
   const id = req.params.id;
 

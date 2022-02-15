@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) {
-        return res.status(401).send({ status: 401, msg: 'Token d\'authentification invalide' })
+      return res.status(401).send({ status: 401, msg: 'Token d\'authentification invalide' })
     }
     req.user = user
     req.userId = user._id

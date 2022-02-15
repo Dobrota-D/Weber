@@ -7,6 +7,7 @@ export default function StatsTab() {
   const [questions, setQuestions] = useState()
   
   const URL = process.env.REACT_APP_BACKEND_URL
+  const token = localStorage.getItem('token')
   
   useEffect(() => {
     const fetchData = async() => {
@@ -34,7 +35,7 @@ export default function StatsTab() {
     // Get all questions
     let toReturn
     
-    await fetch(`${URL}/questions`)
+    await fetch(`${URL}/questions`, { headers: { 'authorization': `Bearer ${token}` }})
     .then(res => res.json())
     .then(res => {
       setQuestions(res.questions)
