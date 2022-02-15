@@ -1,27 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const db = require('../db/export')
-const authenticateToken = require('../middleware/authenticateToken')
-const Questions = db.models.questions
-const Jobs = db.models.jobs
-const Users = db.models.users
+const db = require("../db/export");
+const authenticateToken = require("../middleware/authenticateToken");
+const Questions = db.models.questions;
+const Jobs = db.models.jobs;
+const Users = db.models.users;
 
 router.get("/", async (req, res) => {
-  let questions = [];
   // Return all questions
-  if (req.query.nb) {
-    questions = await Questions.find({
-      questions: { hasAnswer: false },
-    }).limit(parseInt(req.query.nb));
-  } else {
-    questions = await Questions.find();
-  }
-  const questions = await Questions.find()
-  res.status(200).send({ questions })
-
-})
-router.get('/:id', async (req, res) => {
+  const questions = await Questions.find();
+  res.status(200).send({ questions });
+});
+router.get("/:id", async (req, res) => {
   // Return a specific question
   const id = req.params.id;
 
@@ -35,46 +26,56 @@ router.post("/", async (req, res) => {
   const data = JSON.parse(req.body);
 
   // Reorganize data to match with the question's model
-  const reorganizedData = await reorganizeData(data)
-  
-  const question = new Questions(reorganizedData)
-  await question.save(err => {
-    if (err) res.status(400).send({ error: err })
-    else res.status(200).send({ msg: 'New question created' })
-  })
-})
-router.post('/answer', authenticateToken, async(req, res) => {
+  const reorganizedData = await reorganizeData(data);
+
+  const question = new Questions(reorganizedData);
+  await question.save((err) => {
+    if (err) res.status(400).send({ error: err });
+    else res.status(200).send({ msg: "New question created" });
+  });
+});
+router.post("/answer", authenticateToken, async (req, res) => {
   // Update user's data after an anwser
-  const data = JSON.parse(req.body)
-  const answer = data.answer
-  const questionId = data.questionId
-  
-  const user = await Users.findById(req.userId)
-  
+  const data = JSON.parse(req.body);
+  const answer = data.answer;
+  const questionId = data.questionId;
+
+  const user = await Users.findById(req.userId);
+
   // Find the question in the user's profile
-  const userQuestion = user.questions.filter(question => question.questionId === questionId)[0]
+  const userQuestion = user.questions.filter(
+    (question) => question.questionId === questionId
+  )[0];
   // Update the question
-  userQuestion.hasAnswer = true
-  userQuestion.response = answer
-  
+  userQuestion.hasAnswer = true;
+  userQuestion.response = answer;
+
   // Update the user's stats with the user's answer
-  const question = await Questions.findOne({ id: questionId })
-  const questionJobs = question.jobs
-  
+  const question = await Questions.findOne({ id: questionId });
+  const questionJobs = question.jobs;
+
   // Get the question's jobs in the user's profile
-  const userStats = user.stats.filter(job => questionJobs.find(questionJob => questionJob.id === job.jobId))
-  
+  const userStats = user.stats.filter((job) =>
+    questionJobs.find((questionJob) => questionJob.id === job.jobId)
+  );
+
   // Update the percentage
-  userStats.forEach(job => {
-    if (answer === 'yes') job.percentage += 10
-    else if (answer === 'no' && job.percentage > 9) job.percentage -= 10
-  })
-  
+  userStats.forEach((job) => {
+    if (answer === "yes") job.percentage += 10;
+    else if (answer === "no" && job.percentage > 9) job.percentage -= 10;
+  });
+
   user.save(() => {
-    res.status(200).send({ status: 200, msg: `Responded ${answer === null ? '🤷‍♂️' : answer} to question ${questionId}`, stats: userStats })
-  })
-})
-router.delete('/:id', (req, res) => {
+    res.status(200).send({
+      status: 200,
+      msg: `Responded ${
+        answer === null ? "🤷‍♂️" : answer
+      } to question ${questionId}`,
+      stats: userStats,
+    });
+  });
+});
+router.delete("/:id", (req, res) => {
   // Delete a question
   const id = req.params.id;
 
@@ -130,11 +131,16 @@ async function getJobs(data) {
 }
 async function getQuestionId() {
   // Return a unique id for the creation of a question
-  const questions = await Questions.find()
-  
+  const questions = await Questions.find();
+
   // Get the highest id from the jobs list
-  const highestId = Math.max.apply(Math, questions.map(question => { return question.id; }))
-  return highestId + 1
+  const highestId = Math.max.apply(
+    Math,
+    questions.map((question) => {
+      return question.id;
+    })
+  );
+  return highestId + 1;
 }
 
 module.exports = router;
