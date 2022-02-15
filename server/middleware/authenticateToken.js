@@ -11,6 +11,7 @@ module.exports = (req, res, next) => {
         return res.status(401).send({ code: 401, msg: 'Token d\'authentification invalide' })
     }
     req.user = user
+    req.userId = user._id
     next()
   })
 }

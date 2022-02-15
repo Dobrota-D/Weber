@@ -9,6 +9,8 @@ const authenticateToken = require('../middleware/authenticateToken')
 
 const db = require('../db/export')
 const Users = db.models.users
+const Questions = db.models.questions
+const Jobs = db.models.jobs
 
 router.get('/', authenticateToken, async(req, res) => {
   // Return user
@@ -25,7 +27,10 @@ router.post('/register', async(req, res) => {
     return res.status(400).send({ status: 400, error: {input: 'username', msg: 'Nom d\'utilisateur déjà pris' }})
   }
   
-  const user = new Users({ username, password, isAdmin: false, data: [] })
+  const questions = await getQuestions()
+  const stats = await getStats()
+  const user = new Users({ username, password, isAdmin: false, questions, stats })
+  
   const token = generateAccessToken(user)
   
   await user.save(() => {
@@ -52,6 +57,36 @@ router.post('/login', async(req, res) => {
 
 function generateAccessToken(user) {
   return jwt.sign(user.toJSON(), process.env.ACCESS_TOKEN_SECRET)
+}
+
+
+/* FUNCTIONS */
+async function getQuestions() {
+  // Get all quesitons
+  const questions = await Questions.find()
+  let userQuestions = []
+  
+  questions.forEach(question => {
+    userQuestions.push({
+      questionId: question.id,
+      hasAnswer: false
+    })
+  })
+  
+  return userQuestions
+}
+async function getStats() {
+  // Create user's stats
+  const jobs = await Jobs.find()
+  let stats = []
+  
+  jobs.forEach(job => {
+    stats.push({
+      jobId: job.id,
+      percentage: 0
+    })
+  })
+  return stats
 }
 
 module.exports = router

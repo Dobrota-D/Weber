@@ -4,7 +4,19 @@ const usersSchema = new mongoose.Schema({
   username: String,
   password: String,
   isAdmin: Boolean,
-  data: Array
+  questions: [
+    {
+      questionId: Number,
+      hasAnswer: Boolean,
+      response: String // Must be yes, no or null
+    }
+  ],
+  stats: [
+    {
+      jobId: Number,
+      percentage: Number
+    }
+  ]
 }, {timestamps: true})
 
 module.exports = mongoose.model('users', usersSchema)

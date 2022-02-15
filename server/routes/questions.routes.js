@@ -2,15 +2,16 @@ const express = require('express')
 const router = express.Router()
 
 const db = require('../db/export')
+const authenticateToken = require('../middleware/authenticateToken')
 const Questions = db.models.questions
 const Jobs = db.models.jobs
+const Users = db.models.users
 
 router.get('/', async (req, res) => {
   // Return all questions
   if (req.query.nb){
     
   }
-  console.log(req.query);
   const questions = await Questions.find()
   res.status(200).send({ questions })
 
@@ -35,6 +36,37 @@ router.post('/', async (req, res) => {
   await question.save(err => {
     if (err) res.status(400).send({ error: err })
     else res.status(200).send({ msg: 'New question created' })
+  })
+})
+router.post('/answer', authenticateToken, async(req, res) => {
+  // Update user's data after an anwser
+  const data = JSON.parse(req.body)
+  const answer = data.answer
+  const questionId = data.questionId
+  
+  const user = await Users.findById(req.userId)
+  
+  // Find the question in the user's profile
+  const userQuestion = user.questions.filter(question => question.questionId === questionId)[0]
+  // Update the question
+  userQuestion.hasAnswer = true
+  userQuestion.response = answer
+  
+  // Update the user's stats with the user's answer
+  const question = await Questions.findOne({ id: questionId })
+  const questionJobs = question.jobs
+  
+  // Get the question's jobs in the user's profile
+  const userStats = user.stats.filter(job => questionJobs.find(questionJob => questionJob.id === job.jobId))
+  
+  // Update the percentage
+  userStats.forEach(job => {
+    if (answer === 'yes') job.percentage += 10
+    else if (answer === 'no' && job.percentage > 9) job.percentage -= 10
+  })
+  
+  user.save(() => {
+    res.status(200).send({ status: 200, msg: `Responded ${answer === null ? '🤷‍♂️' : answer} to question ${questionId}`, stats: userStats })
   })
 })
 router.delete('/:id', (req, res) => {
@@ -67,6 +99,7 @@ async function reorganizeData(data) {
   const jobs = await getJobs(data)
   
   const organizedData = {
+    id: await getQuestionId(),
     question: data.question,
     jobs
   }
@@ -90,6 +123,14 @@ async function getJobs(data) {
     }
   }
   return jobs
+}
+async function getQuestionId() {
+  // Return a unique id for the creation of a question
+  const questions = await Questions.find()
+  
+  // Get the highest id from the jobs list
+  const highestId = Math.max.apply(Math, questions.map(question => { return question.id; }))
+  return highestId + 1
 }
 
 
