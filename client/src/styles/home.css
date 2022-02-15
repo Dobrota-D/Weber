@@ -13,12 +13,11 @@
   background: var(--secondary-purple);
   border-radius: 8px;
   overflow: hidden;
-  will-change: transform;
-  transition: all 0.3s ease-in-out;
+  transition: all 2s ease-in-out;
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
-  animation: apparingCard 0.8s 2.4s forwards;
+  animation: apparingCard 0.8s 2s forwards;
   bottom: 0;
   z-index: 3;
 }
@@ -38,7 +37,57 @@
     opacity: 1;
   }
 }
-.container-cards div div .question-card.third {
+.question-card.number1.swipe-right {
+  animation: swipeRight 1s ease-in-out forwards;
+}
+@keyframes swipeRight {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+    transform: translateX(150%) rotateZ(15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(150%) rotateZ(15deg);
+  }
+}
+.question-card.number1.swipe-left {
+  animation: swipeLeft 1s ease-in-out forwards;
+}
+@keyframes swipeLeft {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+    transform: translateX(-150%) rotateZ(-15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-150%) rotateZ(-15deg);
+  }
+}
+.question-card.number1.swipe-down {
+  animation: swipeDown 1s ease-in-out forwards;
+}
+@keyframes swipeDown {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(150%) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(150%) scale(0.8);
+  }
+}
+
+.container-cards div div .question-card.number3 {
+  transition: all 2s ease-in-out;
   background-color: #5858b675;
   animation: apparingCard 0.8s forwards;
   transform: scale(0.8) translateY(22%);
@@ -46,15 +95,22 @@
   pointer-events: none;
   z-index: 1;
 }
-.container-cards div div .question-card.second {
+.container-cards div div .question-card.number2 {
+  transition: none;
   background-color: #5858b6;
-  animation: apparingCard 0.8s 1.2s forwards;
+  animation: apparingCard 0.8s 1s forwards;
   transform: scale(0.9) translateY(10%);
   cursor: default;
   pointer-events: none;
   z-index: 2;
 }
-
+.container-cards div div .question-card.other {
+  transition: all 2s ease-in-out;
+  transform: translateY(30%);
+  z-index: 0;
+  visibility: hidden;
+  opacity: 0;
+}
 .container-cards {
   display: flex;
   flex-direction: column;
