@@ -1,22 +1,34 @@
 const express = require("express");
 const router = express.Router();
 
-const db = require('../db/export')
 const authenticateToken = require('../middleware/authenticateToken')
+
+const db = require('../db/export')
 const Questions = db.models.questions
 const Jobs = db.models.jobs
 const Users = db.models.users
 
-router.get("/", async (req, res) => {
-  let questions = [];
-  // Return all questions
-  if (req.query.nb) {
-    questions = await Questions.find({
-      questions: { hasAnswer: false },
-    }).limit(parseInt(req.query.nb));
-  } else {
-    questions = await Questions.find();
+router.get('/', authenticateToken, async (req, res) => {
+  // Return questions
+  const user = await Users.findById(req.user._id)
+  
+  if (req.query.hasAnswer === 'false') {
+    // Send questions not answered by the user
+    const notAnsweredQuestions = user.questions.filter(question => !question.hasAnswer)
+    const questions = await Questions.find()
+    let userQuestions = []
+    
+    await notAnsweredQuestions.forEach(async(question, index) => {
+      userQuestions.push({
+        questionId: question.questionId,
+        hasAnswer: question.hasAnswer,
+        title: questions[question.questionId].question
+      })
+    })
+    
+    return res.status(200).send({ status: 200, questions: userQuestions })
   }
+  
   const questions = await Questions.find()
   res.status(200).send({ questions })
 
