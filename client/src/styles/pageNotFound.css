@@ -1,0 +1,33 @@
+.page-not-found-component {
+  flex-direction: column;
+}
+.page-not-found-component span {
+  margin: 0 5px;
+  color: var(--secondary-purple);
+}
+.page-not-found-component a {
+  color: var(--secondary-purple);
+  text-decoration: underline;
+  margin-top: 30px;
+  font-size: 15px;
+}
+.page-not-found-component .logo {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.page-not-found-component h1 {
+  margin-right: 10px;
+}
+.page-not-found-component .logo span {
+  width: 19px;
+  height: 25px;
+  border-radius: 5px;
+  background: var(--secondary-purple);
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+.page-not-found-component .logo span:last-of-type {
+  transform: translateX(-19px) rotate(20deg);
+}
