@@ -29,7 +29,7 @@ function sendAnswer(answer) {
   const URL = process.env.REACT_APP_BACKEND_URL
   const token = localStorage.getItem('token')
   
-  const questionId = 2
+  const questionId = 0
   
   fetch(
     `${URL}/questions/answer`,

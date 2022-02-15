@@ -15,7 +15,7 @@ export default function RankingCard(props) {
           {(value) => <CircularProgressbar value={value} text={`${value}%`} />}
         </ProgressProvider>
       </div>
-      <div className="ranking-name-job">{props.data.name}</div>
+      <div className="ranking-name-job">{props.data.title}</div>
     </div>
   );
 }

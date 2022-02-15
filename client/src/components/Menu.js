@@ -35,7 +35,7 @@ export default function Menu(props) {
         { props.isAdmin &&
           <Link to="/admin">
             <Lock />
-            Panel admin
+            Administration
           </Link>
         }
       </div>

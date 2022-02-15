@@ -7,7 +7,7 @@ export default function ContainerCard() {
     fetch(`${URL}/questions/?nb=3`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        //console.log(res);
       });
   }, []);
 
