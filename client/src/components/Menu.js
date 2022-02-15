@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import Home from "../assets/svg/Home";
 import File from "../assets/svg/File";
 import Help from "../assets/svg/Help";
+import Lock from "../assets/svg/Lock";
 import Logout from "../assets/svg/Logout";
 
 import "../styles/menu.css";
 import Podium from "../assets/svg/Podium";
 
-export default function Menu() {
+export default function Menu(props) {
   return (
     <div className="menu">
       <div className="logo">
@@ -31,6 +32,12 @@ export default function Menu() {
           <Podium />
           Classement
         </Link>
+        { props.isAdmin &&
+          <Link to="/admin">
+            <Lock />
+            Panel admin
+          </Link>
+        }
       </div>
 
       <div className="bottom">
