@@ -18,16 +18,25 @@ export default function Swipe() {
     "Question 07",
   ]);
 
-  const swiped = (dir) => {
+  const swiped = (dir, type) => {
     setSwipe(null);
-    console.log(dir);
+    if (!type) {
+      if (dir === "right") {
+        type = "yes";
+      } else if (dir === "left") {
+        type = "no";
+      } else {
+        type = null;
+      }
+    }
+    sendAnswer(type);
     setQuestions((questions) => questions.slice(0, questions.length - 1));
   };
 
-  const swiping = async (dir) => {
+  const swiping = async (dir, type) => {
     setSwipe(dir);
-    setTimeout(() => {
-      swiped();
+    setTimeout(async () => {
+      swiped(dir, type);
     }, 1000);
   };
 
@@ -62,7 +71,7 @@ export default function Swipe() {
         <div
           className="dislike-button"
           onClick={() => {
-            swiping("left");
+            swiping("left", "no");
           }}
         >
           <Cross />
@@ -70,7 +79,7 @@ export default function Swipe() {
         <div
           className="idk-button"
           onClick={() => {
-            swiping("down");
+            swiping("down", null);
           }}
         >
           <Idk />
@@ -79,7 +88,7 @@ export default function Swipe() {
         <div
           className="like-button"
           onClick={() => {
-            swiping("right");
+            swiping("right", "yes");
           }}
         >
           <Heart />
@@ -87,4 +96,22 @@ export default function Swipe() {
       </div>
     </div>
   );
+}
+
+function sendAnswer(answer) {
+  // Post the user's answer to the server
+  const URL = process.env.REACT_APP_BACKEND_URL;
+  const token = localStorage.getItem("token");
+
+  const questionId = 0;
+
+  fetch(`${URL}/questions/answer`, {
+    method: "POST",
+    headers: { authorization: `Bearer ${token}` },
+    body: JSON.stringify({ questionId, answer }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+    });
 }
