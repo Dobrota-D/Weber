@@ -28,9 +28,16 @@ function App() {
       fetch(`${URL}/auth`, { headers: { 'authorization': `Bearer ${token}` }})
       .then(res => res.json())
       .then(res => {
-        // Check if user is admin
-        setisAdmin(res.user.isAdmin)
-        setIsLoading(false)
+        if (res.status === 200) {
+          // Check if user is admin
+          setisAdmin(res.user.isAdmin)
+          setIsLoading(false)
+        } else {
+          // Case where the token is invalid
+          localStorage.clear()
+          navigate('/login')
+          setIsLoading(false)
+        }
       })
     } else {
       navigate('/login')
@@ -42,7 +49,7 @@ function App() {
   
   return (
     <div className="App">
-      <Menu />
+      <Menu isAdmin={isAdmin} />
 
       <Routes>
         <Route path="/" element={<Home />} />
