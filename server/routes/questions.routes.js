@@ -8,15 +8,6 @@ const Jobs = db.models.jobs
 const Users = db.models.users
 
 router.get("/", async (req, res) => {
-  let questions = [];
-  // Return all questions
-  if (req.query.nb) {
-    questions = await Questions.find({
-      questions: { hasAnswer: false },
-    }).limit(parseInt(req.query.nb));
-  } else {
-    questions = await Questions.find();
-  }
   const questions = await Questions.find()
   res.status(200).send({ questions })
 
