@@ -13,13 +13,15 @@
   background: var(--secondary-purple);
   border-radius: 8px;
   overflow: hidden;
-  transition: all 2s ease-in-out;
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
   animation: apparingCard 0.8s 2s forwards;
   bottom: 0;
   z-index: 3;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 @keyframes apparingCard {
   0% {
@@ -96,7 +98,6 @@
   z-index: 1;
 }
 .container-cards div div .question-card.number2 {
-  transition: none;
   background-color: #5858b6;
   animation: apparingCard 0.8s 1s forwards;
   transform: scale(0.9) translateY(10%);
@@ -105,7 +106,7 @@
   z-index: 2;
 }
 .container-cards div div .question-card.other {
-  transition: all 2s ease-in-out;
+  background-color: #5858b600;
   transform: translateY(30%);
   z-index: 0;
   visibility: hidden;
