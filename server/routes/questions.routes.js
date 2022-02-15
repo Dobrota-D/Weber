@@ -8,11 +8,19 @@ const Jobs = db.models.jobs;
 const Users = db.models.users;
 
 router.get("/", async (req, res) => {
+<<<<<<< HEAD
+  const questions = await Questions.find()
+  res.status(200).send({ questions })
+
+})
+router.get('/:id', async (req, res) => {
+=======
   // Return all questions
   const questions = await Questions.find();
   res.status(200).send({ questions });
 });
 router.get("/:id", async (req, res) => {
+>>>>>>> main
   // Return a specific question
   const id = req.params.id;
 
