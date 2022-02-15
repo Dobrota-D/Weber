@@ -159,6 +159,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+.container-cards .button-container .idk-button svg {
+  width: 30px;
+  height: 30px;
 }
 
 .dislike-button {

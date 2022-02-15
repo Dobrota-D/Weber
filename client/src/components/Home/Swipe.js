@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+
 import Cross from "../../assets/svg/Cross";
 import Heart from "../../assets/svg/Heart";
 import Idk from "../../assets/svg/Idk";
+import Shrug from '../../assets/svg/Shrug'
+
 import TinderCard from "react-tinder-card";
 
 export default function Swipe() {
@@ -82,7 +85,7 @@ export default function Swipe() {
             swiping("down", null);
           }}
         >
-          <Idk />
+          <Shrug />
         </div>
 
         <div
