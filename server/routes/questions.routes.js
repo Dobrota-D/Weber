@@ -1,37 +1,39 @@
 const express = require("express");
 const router = express.Router();
 
-const authenticateToken = require('../middleware/authenticateToken')
+const authenticateToken = require("../middleware/authenticateToken");
 
-const db = require('../db/export')
-const Questions = db.models.questions
-const Jobs = db.models.jobs
-const Users = db.models.users
+const db = require("../db/export");
+const Questions = db.models.questions;
+const Jobs = db.models.jobs;
+const Users = db.models.users;
 
-router.get('/', authenticateToken, async (req, res) => {
+router.get("/", authenticateToken, async (req, res) => {
   // Return questions
-  const user = await Users.findById(req.user._id)
-  const questions = await Questions.find()
-  
-  if (req.query.hasAnswer === 'false') {
+  const user = await Users.findById(req.user._id);
+  const questions = await Questions.find();
+
+  if (req.query.hasAnswer === "false") {
     // Send questions not answered by the user
-    const notAnsweredQuestions = user.questions.filter(question => !question.hasAnswer)
-    let userQuestions = []
-    
-    await notAnsweredQuestions.forEach(async(question, index) => {
+    const notAnsweredQuestions = user.questions.filter(
+      (question) => !question.hasAnswer
+    );
+    let userQuestions = [];
+
+    notAnsweredQuestions.forEach((question, index) => {
       userQuestions.push({
         questionId: question.questionId,
         hasAnswer: question.hasAnswer,
-        title: questions[question.questionId].question
-      })
-    })
-    
-    return res.status(200).send({ status: 200, questions })
+        title: questions[question.questionId].question,
+      });
+    });
+
+    return res.status(200).send({ status: 200, questions: userQuestions });
   }
-  
-  res.status(200).send({ status: 200, questions })
-})
-router.get('/:id', async (req, res) => {
+
+  res.status(200).send({ status: 200, questions });
+});
+router.get("/:id", async (req, res) => {
   // Return all questions
   const questions = await Questions.find();
   res.status(200).send({ questions });
