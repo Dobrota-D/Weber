@@ -180,8 +180,17 @@
   position: relative;
 }
 .create-question-component .input-group .error-msg, .create-job-component .input-group .error-msg {
-  bottom: -25px;
+  display: flex;
+  align-items: center;
+  color: var(--error-color);  
+  position: absolute;
+  bottom: -22px;
   font-size: 14px;
+}
+.create-question-component .input-group .error-msg svg, .create-job-component .input-group .error-msg svg {
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
 }
 .create-job-component .job-content-input-group .error-msg {
   bottom: 13px;
@@ -229,8 +238,17 @@
   user-select: none;
 }
 .create-question-form .jobs-list .error-msg {
+  display: flex;
+  align-items: center;
+  color: var(--error-color);  
+  position: absolute;
   bottom: -17px;
   font-size: 14px;
+}
+.create-question-form .jobs-list .error-msg svg {
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
 }
 .create-question-form .btns, .create-job-form .btns {
   display: flex;

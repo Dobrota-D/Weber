@@ -20,11 +20,11 @@ router.get("/", authenticateToken, async (req, res) => {
     );
     let userQuestions = [];
 
-    notAnsweredQuestions.forEach((question, index) => {
+    notAnsweredQuestions.forEach(question => {
       userQuestions.push({
         questionId: question.questionId,
         hasAnswer: question.hasAnswer,
-        title: questions[question.questionId].question
+        title: questions.filter(q => q.id === question.questionId)[0].question
       });
     });
 
@@ -39,7 +39,7 @@ router.get("/", authenticateToken, async (req, res) => {
       userQuestions.push({
         questionId: question.questionId,
         hasAnswer: question.hasAnswer,
-        title: questions[question.questionId].question
+        title: questions.filter(q => q.id === question.questionId)[0].question
       })
     })
     
