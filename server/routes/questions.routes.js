@@ -24,7 +24,7 @@ router.get("/", authenticateToken, async (req, res) => {
       userQuestions.push({
         questionId: question.questionId,
         hasAnswer: question.hasAnswer,
-        title: questions[question.questionId].question,
+        title: questions[question.questionId].question
       });
     });
 

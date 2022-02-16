@@ -62,7 +62,7 @@ export default function CreateQuestion(props) {
           )}
           className='question-input'
           placeholder='Nouvelle question...'
-          autocomplete="off"
+          autoComplete="off"
           autoFocus
         />
         { errors.question &&

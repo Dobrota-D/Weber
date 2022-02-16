@@ -51,7 +51,7 @@
 .menu .bottom {
   margin-bottom: 20px;
 }
-.menu .bottom a {
+.menu .bottom a, .menu .bottom p {
   display: flex;
   align-items: center;
   padding-left: 25px;
@@ -59,12 +59,59 @@
   opacity: .3;
   margin-top: 5px;
   transition: opacity 0.3s;
+  cursor: pointer;
 }
-.menu .bottom a:hover {
+.menu .bottom a:hover, .menu .bottom p:hover {
   opacity: 1;
 }
 .menu .bottom svg {
   margin-right: 5px;
   width: 20px;
   height: 20px;
+}
+.menu .refresh-results-popup-container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+.menu .refresh-results-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: var(--light-bg-color);
+  width: 300px;
+  border-radius: 10px;
+}
+.menu .refresh-results-popup p {
+  text-align: center;
+  font-weight: 300;
+  font-size: 15px;
+}
+.menu .refresh-results-popup div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.menu .refresh-results-popup button {
+  width: 45%;
+  border-radius: 5px;
+  padding: 7px 0;
+  font-size: 14px;
+  font-weight: 500;
+  user-select: none;
+  font-family: 'poppins', sans-serif;
+}
+.menu .refresh-results-popup button:first-of-type {
+  background: var(--error-color);
+  color: white;
 }
