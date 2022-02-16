@@ -36,6 +36,7 @@ export default function CreateJob(props) {
             )}
             className='job-input'
             placeholder='Nouveau métier...'
+            autocomplete="off"
             autoFocus
           />
           { errors.title &&

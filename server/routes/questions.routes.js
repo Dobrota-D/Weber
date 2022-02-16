@@ -14,11 +14,11 @@ router.get('/', authenticateToken, async (req, res) => {
   const questions = await Questions.find()
   
   if (req.query.hasAnswer === 'false') {
-    // Send questions not answered by the user
+    // Send all not answered questions by the user
     const notAnsweredQuestions = user.questions.filter(question => !question.hasAnswer)
     let userQuestions = []
     
-    await notAnsweredQuestions.forEach(async(question, index) => {
+    notAnsweredQuestions.forEach(question => {
       userQuestions.push({
         questionId: question.questionId,
         hasAnswer: question.hasAnswer,
@@ -27,6 +27,21 @@ router.get('/', authenticateToken, async (req, res) => {
     })
     
     return res.status(200).send({ status: 200, questions })
+  }
+  else if (req.query.hasAnswer === 'true') {
+    // Send all answered questions by the user
+    const answeredQuestions = user.questions.filter(question => question.hasAnswer)
+    let userQuestions = []
+    
+    answeredQuestions.forEach(question => {
+      userQuestions.push({
+        questionId: question.questionId,
+        hasAnswer: question.hasAnswer,
+        title: questions[question.questionId].question
+      })
+    })
+    
+    return res.status(200).send({ status: 200, questions: userQuestions })
   }
   
   res.status(200).send({ status: 200, questions })
@@ -164,7 +179,7 @@ async function getQuestionId() {
       return question.id;
     })
   );
-  return highestId + 1;
+  return highestId === -Infinity ? 0 : highestId + 1;
 }
 
 module.exports = router;

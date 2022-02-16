@@ -1,3 +1,11 @@
+.ranking-component {
+  overflow: auto;
+}
+.ranking-component .jobs-title-main-component {
+  position: inherit;
+  top: 0;
+  width: auto;
+}
 .ranking-global-container .ranking-card-global .ranking-circle-progress {
   width: 60px;
   height: 60px;
@@ -49,9 +57,7 @@
 }
 .ranking-global-container {
   position: relative;
-  margin-top: 65px;
   overflow-y: auto;
-  height: calc(100vh - 120px);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -111,4 +117,26 @@
   .CircularProgressbar-trail {
   fill: #fff;
   stroke: #fff;
+}
+.results-fiability-container {
+  margin: 30px 50px 30px;
+  font-size: 15px;
+  font-weight: 300;
+}
+.results-fiability-container p:first-of-type span {
+  font-weight: 600;
+  font-size: 16px;
+}
+.results-fiability-container p:last-of-type span {
+  font-weight: 500;
+  font-size: 16px;
+}
+.results-fiability-container p:last-of-type .forte {
+  color: var(--success-color);
+}
+.results-fiability-container p:last-of-type .moyen {
+  color: var(--warning-color);
+}
+.results-fiability-container p:last-of-type .faible {
+  color: var(--error-color);
 }
