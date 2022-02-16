@@ -7,20 +7,10 @@ import Shrug from '../../assets/svg/Shrug'
 
 import TinderCard from "react-tinder-card";
 
-export default function Swipe() {
+export default function Swipe(props) {
   const [swipe, setSwipe] = useState(null);
 
-  const [questions, setQuestions] = useState([
-    "Question 00",
-    "Question 01",
-    "Question 02",
-    "Question 03",
-    "Question 04",
-    "Question 05",
-    "Question 06",
-    "Question 07",
-  ]);
-
+  const [questions, setQuestions] = useState(props.questions);
   const swiped = (dir, type) => {
     setSwipe(null);
     if (!type) {
@@ -32,7 +22,7 @@ export default function Swipe() {
         type = null;
       }
     }
-    sendAnswer(type);
+    sendAnswer(type, questions.length - 1);
     setQuestions((questions) => questions.slice(0, questions.length - 1));
   };
 
@@ -65,7 +55,7 @@ export default function Swipe() {
                 
               `}
             >
-              {question}
+              {question.title}
             </TinderCard>
           );
         })}
@@ -101,12 +91,12 @@ export default function Swipe() {
   );
 }
 
-function sendAnswer(answer) {
+function sendAnswer(answer, id) {
   // Post the user's answer to the server
   const URL = process.env.REACT_APP_BACKEND_URL;
   const token = localStorage.getItem("token");
 
-  const questionId = 0;
+  const questionId = id;
 
   fetch(`${URL}/questions/answer`, {
     method: "POST",
