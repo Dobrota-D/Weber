@@ -95,7 +95,7 @@ function sendAnswer(answer, id) {
   // Post the user's answer to the server
   const URL = process.env.REACT_APP_BACKEND_URL;
   const token = localStorage.getItem("token");
-
+  
   const questionId = id;
 
   fetch(`${URL}/questions/answer`, {
@@ -105,6 +105,6 @@ function sendAnswer(answer, id) {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
+      //console.log(res);
     });
 }

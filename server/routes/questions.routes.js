@@ -84,9 +84,7 @@ router.post("/answer", authenticateToken, async (req, res) => {
   const user = await Users.findById(req.userId);
 
   // Find the question in the user's profile
-  const userQuestion = user.questions.filter(
-    (question) => question.questionId === questionId
-  )[0];
+  const userQuestion = user.questions.filter(question => question.questionId === questionId)[0]
   // Update the question
   userQuestion.hasAnswer = true;
   userQuestion.response = answer;

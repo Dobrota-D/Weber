@@ -6,6 +6,7 @@ import Home from "../assets/svg/Home";
 import File from "../assets/svg/File";
 import Help from "../assets/svg/Help";
 import Lock from "../assets/svg/Lock";
+import Medal from "../assets/svg/Medal";
 import Podium from "../assets/svg/Podium";
 import Logout from "../assets/svg/Logout";
 import Refresh from "../assets/svg/Refresh";
@@ -38,7 +39,7 @@ export default function Menu(props) {
           Fiches métiers
         </Link>
         <Link to="/ranking">
-          <Podium />
+          <Medal />
           Classement
         </Link>
         { props.isAdmin &&
