@@ -26,7 +26,7 @@ export default function QuestionCard(props) {
       props.deleteThisComponent()
     })
   }
-  
+
   const handleHideModifyForm = refresh => {
     // Hide the modify question form
     setIsEditMode(false)
@@ -37,7 +37,7 @@ export default function QuestionCard(props) {
   
   return <div className='question-card'>
     <div className='data'>
-      <div>
+      <div className='left-part'>
         <p className='question'>{ question }</p>
         
         <div className='jobs'>

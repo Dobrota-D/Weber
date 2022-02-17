@@ -19,7 +19,6 @@ router.get("/", authenticateToken, async (req, res) => {
       (question) => !question.hasAnswer
     );
     let userQuestions = [];
-
     notAnsweredQuestions.forEach(question => {
       userQuestions.push({
         questionId: question.questionId,
