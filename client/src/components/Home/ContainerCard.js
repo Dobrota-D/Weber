@@ -19,7 +19,7 @@ export default function ContainerCard() {
           setQuestions(res.questions);
           setIsLoading(false);
         }
-      });
+      })
   }, [URL, token]);
 
   if (isLoading)

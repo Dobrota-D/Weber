@@ -1,0 +1,15 @@
+.about-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.about-component a {
+  color: var(--secondary-purple);
+  text-decoration: underline;
+  margin: 0 5px;
+}
+.about-component p {
+  margin: 10px 0;
+  text-align: justify;
+  padding: 0 100px;
+}

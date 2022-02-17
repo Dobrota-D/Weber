@@ -1,7 +1,6 @@
 .container-cards div div {
   position: relative;
-  width: 90vw;
-  max-width: 300px;
+  width: 300px;
   height: 37vh;
   padding-bottom: 40px;
 }
@@ -130,8 +129,7 @@
 .container-cards .button-container {
   display: flex;
   flex-direction: row;
-  width: 90vw;
-  max-width: 400px;
+  width: 390px;
   margin-top: 15%;
   height: auto;
   justify-content: space-between;
