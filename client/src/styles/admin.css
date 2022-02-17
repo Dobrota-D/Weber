@@ -58,6 +58,10 @@
   justify-content: space-between;
   align-items: center;
 }
+.tab .question-list .question-card .data div:first-of-type {
+  width: calc(100% - 70px);
+  overflow: hidden;
+}
 .tab .question-list .question-card:hover, .tab .jobs-list .job-card:hover {
   background: rgba(100, 100, 100, .05);
 }
@@ -66,9 +70,12 @@
   font-size: 14px;
   opacity: .5;
   font-weight: 300;
+  text-overflow: ellipsis;
 }
 .tab .question-card .job {
   margin-right: 7px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .tab .question-card button, .tab .job-card button {
   background: transparent;
@@ -206,7 +213,7 @@
   width: fit-content;
   padding: 5px;
   padding-right: 80px;
-  margin: 20px 0;
+  margin-top: 10px;
   color: rgba(128, 128, 128, .8);
   user-select: none;
   cursor: pointer;
@@ -229,10 +236,11 @@
 .create-question-form .jobs-list {
   position: relative;
   margin-bottom: 20px;
-  margin-left: 40px;
+  /* margin-left: 40px; */
 }
 .create-question-form .jobs-list input {
   margin-right: 10px;
+  margin-left: 40px;
 }
 .create-question-form .jobs-list label {
   user-select: none;
