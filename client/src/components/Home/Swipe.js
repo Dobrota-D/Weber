@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import Cross from "../../assets/svg/Cross";
 import Heart from "../../assets/svg/Heart";
-import Idk from "../../assets/svg/Idk";
-import Shrug from '../../assets/svg/Shrug'
+import Shrug from "../../assets/svg/Shrug";
+import QrCode from "../../assets/png/frame.png";
 
 import TinderCard from "react-tinder-card";
 
@@ -59,6 +59,14 @@ export default function Swipe(props) {
             </TinderCard>
           );
         })}
+        <div
+          className={`question-card ${
+            questions.length >= 3 ? "other" : "number" + (questions.length + 1)
+          }`}
+        >
+          Merci d'avoir répondu, vos résultats ne peuvent pas être plus précis.
+          <img className="qrCodeDone" src={QrCode} alt="qrCodeDone"></img>{" "}
+        </div>
       </div>
       <div className="button-container">
         <div
@@ -95,7 +103,7 @@ function sendAnswer(answer, id) {
   // Post the user's answer to the server
   const URL = process.env.REACT_APP_BACKEND_URL;
   const token = localStorage.getItem("token");
-  
+
   const questionId = id;
 
   fetch(`${URL}/questions/answer`, {
